@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "command": "bash",
+    "echoCommand": true,
+    "args": [
+        "-c"
+    ],
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "args": [
+                "-c",
+                "${workspaceFolder}/build.sh \"${workspaceFolder}\""
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
