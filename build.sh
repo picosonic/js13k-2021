@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Check for work folder specified
+if [ $# -eq 1 ]
+then
+  workdir=$1
+  echo "Entering ${workdir}"
+  cd "${workdir}"
+fi
+
 zipfile="js13k.zip"
 buildpath="tmpbuild"
 jscat="${buildpath}/min.js"
