@@ -31,7 +31,7 @@ echo -n '<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="Con
 # Inject the concatenated and minified CSS files
 for file in "main.css"
 do
-  yui-compressor "${file}" >> "${indexcat}"
+  JAVA_CMD=java yui-compressor "${file}" >> "${indexcat}"
 done
 
 # Add on the rest of the index file
