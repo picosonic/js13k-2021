@@ -41,3 +41,9 @@ Getting some game ideas before starting to think about doing coding experiments.
 ![FA-XX stealth](aug13.jpg?raw=true "FA-XX stealth")
 
 Decided to make a 3D stealth flight sim and naming it "Airspace Alpha Zulu". Built a stealth fighter jet 3D model loosely based on concept renderings for upcoming FA-XX. Only 56 vertices and 88 faces. Need to fix exhuast vents and do something for the wheels. But I'm quite happy with it.
+
+14th August
+-----------
+Improved 3D model exhuast vents and set it spinning to take a look from various angles.
+
+![Spinning model](aug14.gif?raw=true "Spinning model")
