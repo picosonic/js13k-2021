@@ -47,3 +47,13 @@ Decided to make a 3D stealth flight sim and naming it "Airspace Alpha Zulu". Bui
 Improved 3D model exhuast vents and set it spinning to take a look from various angles.
 
 ![Spinning model](aug14.gif?raw=true "Spinning model")
+
+15th August
+-----------
+Investigating fighter jet HUD symbology.
+
+![HUD symbology](aug15.jpg?raw=true "HUD symbology")
+
+Started putting together a test page for HUD visualisation.
+
+![HUD test](aug15b.png?raw=true "HUD test")
