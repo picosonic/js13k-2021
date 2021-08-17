@@ -38,9 +38,9 @@ Here is a rough diary of progress as posted on [Twitter](https://twitter.com/fem
 -----------
 Getting some game ideas before starting to think about doing coding experiments. I like the thought of doing more than one game. Perhaps a 2D and a 3D one, but I may run out of time very quickly unless I make one of them really simple to code but really fun to play.
 
-![FA-XX stealth](aug13.jpg?raw=true "FA-XX stealth")
+![F/A-XX stealth](aug13.jpg?raw=true "F/A-XX stealth")
 
-Decided to make a 3D stealth flight sim and naming it "Airspace Alpha Zulu". Built a stealth fighter jet 3D model loosely based on concept renderings for upcoming FA-XX. Only 56 vertices and 88 faces. Need to fix exhuast vents and do something for the wheels. But I'm quite happy with it.
+Decided to make a 3D [stealth](https://en.wikipedia.org/wiki/Stealth_aircraft) flight sim and naming it "Airspace Alpha Zulu". Built a stealth fighter jet 3D model loosely based on concept renderings for upcoming [F/A-XX](https://en.wikipedia.org/wiki/F/A-XX_program). Only 56 vertices and 88 faces. Need to fix exhuast vents and do something for the wheels. But I'm quite happy with it.
 
 14th August
 -----------
@@ -50,10 +50,18 @@ Improved 3D model exhuast vents and set it spinning to take a look from various 
 
 15th August
 -----------
-Investigating fighter jet HUD symbology.
+Investigating fighter jet [HUD](https://en.wikipedia.org/wiki/Head-up_display) symbology.
 
 ![HUD symbology](aug15.jpg?raw=true "HUD symbology")
 
 Started putting together a test page for HUD visualisation.
 
 ![HUD test](aug15b.png?raw=true "HUD test")
+
+16th/17th August
+----------------
+A real struggle to get aircraft metrics data visualised in the [F-16](https://en.wikipedia.org/wiki/General_Dynamics_F-16_Fighting_Falcon) style HUD. Especially around [floating point precision issues](https://stackoverflow.com/questions/1458633/how-to-deal-with-floating-point-number-precision-in-javascript) and scales crossing zero boundary.
+
+Also dashed lines in canvas gave me a real problem. Turning them on didn't work every time and sometimes left dashed enabled for every subsequent line despite me turning it off in the [documented way](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash). Also using [save() and restore()](https://stackoverflow.com/questions/41513197/how-to-reset-canvas-path-style) didn't seem to make any difference. Only putting them into a different canvas worked reliably for me.
+
+![HUD canned data](aug17.gif?raw=true "HUD canned data")
