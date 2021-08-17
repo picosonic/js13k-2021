@@ -65,3 +65,7 @@ A real struggle to get aircraft metrics data visualised in the [F-16](https://en
 Also dashed lines in canvas gave me a real problem. Turning them on didn't work every time and sometimes left dashed enabled for every subsequent line despite me turning it off in the [documented way](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/setLineDash). Also using [save() and restore()](https://stackoverflow.com/questions/41513197/how-to-reset-canvas-path-style) didn't seem to make any difference. Only putting them into a different canvas worked reliably for me.
 
 ![HUD canned data](aug17.gif?raw=true "HUD canned data")
+
+Colourised the 3D plane model and put it onto the clouds to see how it would look.
+
+![Coloured 3D model](aug17b.png?raw=true "Coloured 3D model")
