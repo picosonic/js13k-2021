@@ -69,3 +69,10 @@ Also dashed lines in canvas gave me a real problem. Turning them on didn't work 
 Colourised the 3D plane model and put it onto the clouds to see how it would look.
 
 ![Coloured 3D model](aug17b.png?raw=true "Coloured 3D model")
+
+18th August
+-----------
+Created a 3D model of an aircraft carrier based on [USS Enterprise CVN-65](https://en.wikipedia.org/wiki/USS_Enterprise_(CVN-65)) to hopefully land on following each stealth mission.
+
+![Negative ghostrider the pattern is full](aug18.gif?raw=true "Negative ghostrider the pattern is full")
+
