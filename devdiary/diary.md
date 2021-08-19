@@ -78,4 +78,7 @@ Created a 3D model of an aircraft carrier based on [USS Enterprise CVN-65](https
 
 19th August
 -----------
-Created a simple .obj to JSON conversion script.
+Created a simple .obj to JSON conversion script. Colourised the aircraft carrier, added runway markings and mocked up a landing with some parked jets.
+
+![Landing mockup](aug19.gif?raw=true "Landing mockup")
+
