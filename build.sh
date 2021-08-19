@@ -9,6 +9,7 @@ then
 fi
 
 zipfile="js13k.zip"
+models="models.js"
 buildpath="tmpbuild"
 jscat="${buildpath}/min.js"
 indexcat="${buildpath}/index.html"
@@ -18,9 +19,18 @@ rm -Rf "${buildpath}" >/dev/null 2>&1
 rm -Rf "${zipfile}" >/dev/null 2>&1
 mkdir "${buildpath}"
 
+# Create a 3D models bundle
+echo "var models=[" > "${models}"
+for file in "dev/stealth.obj" "dev/cvn-65.obj"
+do
+  php obj2js.php "${file}" "-" "set" >> "${models}"
+  echo -n "," >> "${models}"
+done
+echo "];" >> "${models}"
+
 # Concatenate the JS files
 touch "${jscat}" >/dev/null 2>&1
-for file in "font.js" "writer.js" "main.js"
+for file in "font.js" "writer.js" "models.js" "main.js"
 do
   cat "${file}" >> "${jscat}"
 done
