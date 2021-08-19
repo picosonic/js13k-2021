@@ -76,3 +76,6 @@ Created a 3D model of an aircraft carrier based on [USS Enterprise CVN-65](https
 
 ![Negative ghostrider the pattern is full](aug18.gif?raw=true "Negative ghostrider the pattern is full")
 
+19th August
+-----------
+Created a simple .obj to JSON conversion script.
