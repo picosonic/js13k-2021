@@ -1,4 +1,26 @@
 body
 {
   background:black;
+  overflow:hidden;
+}
+
+#canvas
+{
+  position:absolute;
+  left:600px;
+  top:0px;
+}
+
+#hud
+{
+  position:absolute;
+  left:0px;
+  top:0px;
+}
+
+#hud2
+{
+  position:absolute;
+  left:0px;
+  top:0px;
 }
