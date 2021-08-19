@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>HUD test</title>
+  <script type="text/javascript" src="../font.js"></script>
+  <script type="text/javascript" src="../writer.js"></script>
+  <script type="text/javascript" src="../hud.js"></script>
+  <script type="text/javascript" src="hudtest.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head>
+<body style="overflow:hidden;">
+  <div id="clouds" style="position:absolute; top:0px; left:0px; width:1280px; height:720px; background-image:url('clouds.png'); background-position:50% 50%; transition:background-position 0.125s;"></div>
+  <div id="hud" style="position:absolute; top:120px; left:352px; width:576px; height:480px; overflow:hidden;">
+  <canvas id="static_hud" width="576" height="480" style="position:absolute; top:0px; left:0px; width:576px; height:480px; box-sizing:border-box; border:2px solid #00ff00; background:rgba(0,0,0,0.4);"></canvas>
+  <canvas id="dynamic_hud" width="576" height="480" style="position:absolute; top:0px; left:0px; width:576px; height:480px; transform-origin:center;"></canvas>
+  </div>
+</body>
+</html>
