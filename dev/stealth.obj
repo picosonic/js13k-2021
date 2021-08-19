@@ -1,4 +1,5 @@
 # Based on FA-XX prototype
+# scale 0.0068 pixels/metre
 
 mtllib open_gl.mtl
 
