@@ -20,16 +20,16 @@ if (!file_exists($input_file))
   exit(0);
 }
 
-// Check for optional scale argument
-if ($argc==4)
-  $scale=$argv[3];
-else
-  $scale="1";
-
 // Check for optional set argument when model is to be part of a set
 $set=false;
+if ($argc==4)
+  $set=$argv[3]==="set";
+
+// Check for optional scale argument
 if ($argc==5)
-  $set=$argv[4]==="set";
+  $scale=$argv[4];
+else
+  $scale="1";
 
 // Next gather some stats on first pass
 $num_verts=0;
@@ -101,6 +101,12 @@ if ($handle)
 
       $cur_tex=$col;
     }
+    else
+    if (substr($line, 0, 8)==="# scale ")
+    {
+      $components=explode(" ", $line);
+      $scale=$components[2];
+    }
   }
 
   fclose($handle);
@@ -118,17 +124,20 @@ $dz=round($min_z+(($max_z-$min_z)/2));
 
 $objname=basename($input_file, ".obj");
 
-echo "Stats\n";
-echo "-----\n";
-echo "Name : $objname\n";
-echo "Vertices : $num_verts\n";
-echo "Faces : $num_faces\n";
-echo "\n";
-echo "Faces reference vertices between $min_face and $max_face\n";
-echo "\n";
-echo "X ranges from $min_x to $max_x, delta of $dx\n";
-echo "Y ranges from $min_y to $max_y, delta of $dy\n";
-echo "Z ranges from $min_z to $max_z, delta of $dz\n";
+if ($output_file!=="-")
+{
+  echo "Stats\n";
+  echo "-----\n";
+  echo "Name : $objname\n";
+  echo "Vertices : $num_verts\n";
+  echo "Faces : $num_faces\n";
+  echo "\n";
+  echo "Faces reference vertices between $min_face and $max_face\n";
+  echo "\n";
+  echo "X ranges from $min_x to $max_x, delta of $dx\n";
+  echo "Y ranges from $min_y to $max_y, delta of $dy\n";
+  echo "Z ranges from $min_z to $max_z, delta of $dz\n";
+}
 
 // Translate the vertices to put model in the centre (for rotating purposes)
 for ($i=0; $i<count($vertices); $i++)
@@ -170,5 +179,8 @@ if (!$set)
   $out.=";";
 
 // Output the JSON
-file_put_contents($output_file, $out);
+if ($output_file==="-")
+  echo "$out";
+else
+  file_put_contents($output_file, $out);
 ?>
