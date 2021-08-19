@@ -1,0 +1,95 @@
+# 0 - Dark Grey
+newmtl gl_0
+Ka 0.4000 0.4000 0.4000
+Kd 0.4000 0.4000 0.4000
+illum 0
+
+# 1 - Red
+newmtl gl_1
+Ka 1.0000 0.0000 0.0000
+Kd 1.0000 0.0000 0.0000
+illum 0
+
+# 2 - Green
+newmtl gl_2
+Ka 0.0000 1.0000 0.0000
+Kd 0.0000 1.0000 0.0000
+illum 0
+
+# 3 - Blue
+newmtl gl_3
+Ka 0.0000 0.0000 1.0000
+Kd 0.0000 0.0000 1.0000
+illum 0
+
+# 4 - Cyan
+newmtl gl_4
+Ka 0.0000 1.0000 1.0000
+Kd 0.0000 1.0000 1.0000
+illum 0
+
+# 5 - Magenta
+newmtl gl_5
+Ka 1.0000 0.0000 1.0000
+Kd 1.0000 0.0000 1.0000
+illum 0
+
+# 6 - Yellow
+newmtl gl_6
+Ka 1.0000 1.0000 0.0000
+Kd 1.0000 1.0000 0.0000
+illum 0
+
+# 7 - White
+newmtl gl_7
+Ka 1.0000 1.0000 1.0000
+Kd 1.0000 1.0000 1.0000
+illum 0
+
+# 8 - Black
+newmtl gl_8
+Ka 0.0000 0.0000 0.0000
+Kd 0.0000 0.0000 0.0000
+illum 0
+
+# 9 - Dark Red
+newmtl gl_9
+Ka 0.5000 0.0000 0.0000
+Kd 0.5000 0.0000 0.0000
+illum 0
+
+# 10 - Dark Green
+newmtl gl_10
+Ka 0.0000 0.5000 0.0000
+Kd 0.0000 0.5000 0.0000
+illum 0
+
+# 11 - Dark Blue
+newmtl gl_11
+Ka 0.0000 0.0000 0.5000
+Kd 0.0000 0.0000 0.5000
+illum 0
+
+# 12 - Dark Cyan
+newmtl gl_12
+Ka 0.0000 0.5000 0.5000
+Kd 0.0000 0.5000 0.5000
+illum 0
+
+# 13 - Dark Magenta
+newmtl gl_13
+Ka 0.5000 0.0000 0.5000
+Kd 0.5000 0.0000 0.5000
+illum 0
+
+# 14 - Dark Yellow
+newmtl gl_14
+Ka 0.5000 0.5000 0.0000
+Kd 0.5000 0.5000 0.0000
+illum 0
+
+# 15 - Light Grey
+newmtl gl_15
+Ka 0.8000 0.8000 0.8000
+Kd 0.8000 0.8000 0.8000
+illum 0

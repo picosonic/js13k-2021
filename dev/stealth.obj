@@ -1,0 +1,247 @@
+# Based on FA-XX prototype
+
+mtllib open_gl.mtl
+
+# Top right outline [1]
+v 147 1357 0
+v 447 1157 0
+v 1766 822 0
+v 2430 115 0
+v 2562 28 0
+v 2656 176 0
+v 2528 574 0
+v 2854 1107 0
+v 2699 1357 0
+
+# Top left outline [10]
+v 2854 1607 0
+v 2528 2140 0
+v 2656 2538 0
+v 2562 2686 0
+v 2430 2599 0
+v 1766 1892 0
+v 447 1557 0
+
+# Visor right [17]
+v 467 1357 124
+v 543 1279 104
+v 810 1243 140
+v 923 1312 202
+v 951 1357 214
+
+# Visor left [22]
+v 923 1402 202
+v 810 1471 140
+v 543 1435 104
+
+# Top right exhaust [25]
+v 2593 1006 35
+v 2773 973 0
+v 2775 1231 0
+v 2592 1207 35
+v 2674 1105 55
+
+# Top left exhaust [30]
+v 2592 1507 35
+v 2775 1483 0
+v 2773 1741 0
+v 2593 1708 35
+v 2674 1607 55
+
+# Thrust right [35]
+v 2150 1006 84
+v 2150 1207 84
+
+# Thrust dip [37]
+v 2150 1357 33
+
+# Thrust left [38]
+v 2150 1507 84
+v 2150 1708 84
+
+# Intake right [40]
+v 1056 1009 0
+v 1108 1066 -122
+v 1056 1287 -112
+
+# Intake left [43]
+v 1056 1427 -112
+v 1108 1648 -122
+v 1056 1705 0
+
+# Mid point right [46]
+v 1802 1017 -127
+
+# Mid point left [47]
+v 1802 1697 -127
+
+# Centre fore point [48]
+v 354 1357 -104
+
+# Mid aft point left [49]
+v 2378 1607 -96
+
+# Mid aft point right [50]
+v 2378 1107 -96
+
+# Front wheel stalk [51]
+v 937 1357 -108
+v 937 1357 -263
+
+# Rear wheel stalk left [53]
+v 1660 1626 -129
+v 1735 1726 -250
+
+# Rear wheel stalk right [55]
+v 1660 1088 -129
+v 1735 988 -250
+
+# Right exhaust vent [57]
+v 2593 1006 5
+v 2592 1207 5
+v 2660 1105 5
+
+# Left exhaust vent [60]
+v 2592 1507 5
+v 2593 1708 5
+v 2660 1607 5
+
+# Next face [63]
+
+usemtl gl_8
+
+# Visor right faces
+f 17 18 21
+f 18 19 21
+f 19 20 21
+
+# Visor left faces
+f 17 21 24
+f 24 21 23
+f 21 22 23
+
+usemtl gl_0
+
+# Upper right body faces
+f 1 2 17
+f 2 18 17
+f 2 19 18
+f 2 3 19
+f 3 20 19
+f 3 21 20
+f 3 4 7
+f 4 5 6
+f 4 6 7
+f 7 26 3
+f 26 25 3
+f 9 28 27
+f 25 29 28
+f 25 28 36
+f 36 35 25
+f 25 35 3
+f 36 28 9
+f 9 37 36
+f 35 36 21
+f 21 3 35
+f 21 36 37
+
+# Upper left body faces
+f 1 17 16
+f 24 16 17
+f 23 16 24
+f 23 15 16
+f 22 15 23
+f 21 15 22
+f 15 11 14
+f 11 12 14
+f 12 13 14
+f 32 11 15
+f 33 32 15
+f 9 31 30
+f 30 34 33
+f 33 39 30
+f 39 38 30
+f 39 33 15
+f 9 30 38
+f 38 37 9
+f 38 39 21
+f 15 21 39
+f 21 37 38
+
+usemtl gl_8
+
+# Air intake right
+f 40 42 41
+
+# Air intake left
+f 43 45 44
+
+usemtl gl_0
+
+# Lower right body faces
+f 42 40 2
+f 42 2 1
+f 41 42 46
+f 46 42 43
+f 3 40 41
+f 3 41 46
+f 3 46 50
+f 3 50 4
+f 46 47 49
+f 50 9 8
+f 8 7 50
+f 50 6 4
+f 5 4 6
+f 6 50 7
+
+# Lower fore body
+f 1 43 42
+
+# Lower left body faces
+f 45 43 16
+f 43 1 16
+f 43 44 47
+f 46 43 47
+f 44 45 15
+f 15 47 44
+f 49 15 14
+f 49 47 15
+f 49 50 46
+f 49 10 9
+f 49 14 12
+f 10 49 11
+f 12 14 13
+f 12 11 49
+
+# Lower aft body faces
+f 50 49 9
+
+usemtl gl_8
+
+# Exhaust right faces
+f 57 25 26
+f 57 26 8
+f 57 8 59
+f 59 8 27
+f 59 27 58
+f 58 27 28
+usemtl gl_6
+f 58 28 29
+f 58 29 59
+f 59 29 25
+f 59 25 57
+
+usemtl gl_8
+
+# Exhaust left faces
+f 60 30 31
+f 60 31 10
+f 10 62 60
+f 62 10 32
+f 62 32 61
+f 61 32 33
+usemtl gl_6
+f 61 33 34
+f 61 34 62
+f 62 34 30
+f 62 30 60
