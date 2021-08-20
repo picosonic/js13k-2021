@@ -82,3 +82,8 @@ Created a simple .obj to JSON conversion script. Colourised the aircraft carrier
 
 ![Landing mockup](aug19.gif?raw=true "Landing mockup")
 
+20th August
+-----------
+Wondered about putting some other jet models into the game. Found a 3D model of the upcoming [Tempest](https://en.wikipedia.org/wiki/BAE_Systems_Tempest) jet. But after conversion it had too many vertices (25,776) and too many faces (51,014) to be useable and made the game engine go really slow. I have tried remeshing it down to 1000 faces which is a lot better but zipped it takes up 7.2kB.
+
+![Tempest](aug20.gif?raw=true "Tempest")
