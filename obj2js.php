@@ -80,9 +80,12 @@ if ($handle)
 
       $face=explode(" ", $line);
 
-      $t1=intval($face[1]);
-      $t2=intval($face[2]);
-      $t3=intval($face[3]);
+      $c=explode("/", $face[1]);
+      $t1=intval($c[0]);
+      $c=explode("/", $face[2]);
+      $t2=intval($c[0]);
+      $c=explode("/", $face[3]);
+      $t3=intval($c[0]);
 
       if ($t1<$min_face) $min_face=$t1;
       if ($t1>$max_face) $max_face=$t1;
