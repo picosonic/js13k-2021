@@ -4,10 +4,10 @@ body
   overflow:hidden;
 }
 
-#canvas
+#threedee
 {
   position:absolute;
-  left:600px;
+  left:0px;
   top:0px;
 }
 

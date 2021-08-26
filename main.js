@@ -15,6 +15,9 @@ var gs={
   static_ctx:null,
   dynamic_canvas:null,
   dynamic_ctx:null,
+
+  threedee:null,
+
   knots:480, // speed
   altitude:12500, // feet
   roll:0, // roll angle degrees
@@ -53,7 +56,7 @@ function rafcallback(timestamp)
 function startup()
 {
   // Just some debug code to make sure things get included in the closure
-  gs.canvas=document.getElementById('canvas');
+  gs.canvas=document.getElementById('threedee');
   gs.ctx=gs.canvas.getContext('2d');
 
   gs.static_canvas=document.getElementById("hud");
@@ -63,12 +66,14 @@ function startup()
 
   drawhud(gs);
 
-  write(gs.ctx, 100, 100, "TEST", 10, "#FF00FF");
+  write(gs.ctx, 800, 100, "TEST", 10, "#FF00FF");
 
   window.requestAnimationFrame(rafcallback);
 
   console.log(models);
   console.log(gs);
+  gs.threedee=new engine3D;
+  gs.threedee.start();
 }
 
 // Run the startup() once page has loaded
