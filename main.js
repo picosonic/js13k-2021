@@ -15,7 +15,8 @@ var gs={
   roll:0, // roll angle degrees
   pitch:0, // pitch angle degrees
   compass:0, // compass heading degrees
-  hudcolour:"rgba(0, 220, 0, 0.9)"
+  hudcolour:"rgba(0, 220, 0, 0.9)",
+  timeline:new timelineobj()
 };
 
 // Startup called once when page is loaded

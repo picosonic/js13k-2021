@@ -30,7 +30,7 @@ echo "];" >> "${models}"
 
 # Concatenate the JS files
 touch "${jscat}" >/dev/null 2>&1
-for file in "font.js" "writer.js" "hud.js" "models.js" "main.js"
+for file in "timeline.js" "font.js" "writer.js" "hud.js" "models.js" "main.js"
 do
   cat "${file}" >> "${jscat}"
 done
