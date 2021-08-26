@@ -6,6 +6,12 @@ body
 
 canvas
 {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1280px;
+  height:720px;
+
   image-rendering:-moz-crisp-edges;
   image-rendering:-webkit-crisp-edges;
   image-rendering:pixelated;
@@ -14,21 +20,12 @@ canvas
 
 #threedee
 {
-  position:absolute;
-  left:0px;
-  top:0px;
 }
 
 #hud
 {
-  position:absolute;
-  left:0px;
-  top:0px;
 }
 
 #hud2
 {
-  position:absolute;
-  left:0px;
-  top:0px;
 }
