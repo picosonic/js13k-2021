@@ -182,7 +182,9 @@ class engine3D
   {
     // Save canvas object and 2d context for it
     this.canvas=document.getElementById('threedee');
-    this.ctx=this.canvas.getContext('2d');
+    this.ctx=this.canvas.getContext('2d', { alpha:false});
+    this.ctx.imageSmoothingEnabled=false;
+    this.ctx.mozimageSmoothingEnabled=false;
 
     // Timestamp for start of render
     this.starttime=null;
