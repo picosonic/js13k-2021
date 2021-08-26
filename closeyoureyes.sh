@@ -18,7 +18,7 @@ then
 fi
 
 # Find out the latest jar filename
-compiler=`ls -rt ${cpath}/closure-compiler-*.jar`
+compiler=`ls -rt ${cpath}/closure-compiler-*.jar | tail -1`
 
 # Use first parameter as JS file, write to stdout with ADVANCED compilation level
 java -jar "${compiler}" --compilation_level ADVANCED --js "$1"
