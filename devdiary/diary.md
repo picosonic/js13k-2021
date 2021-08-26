@@ -87,3 +87,17 @@ Created a simple .obj to JSON conversion script. Colourised the aircraft carrier
 Wondered about putting some other jet models into the game. Found a 3D model of the upcoming [Tempest](https://en.wikipedia.org/wiki/BAE_Systems_Tempest) jet. But after conversion it had too many vertices (25,776) and too many faces (51,014) to be useable and made the game engine go really slow. I have tried remeshing it down to 1000 faces which is a lot better but zipped it takes up 7.2kB.
 
 ![Tempest](aug20.gif?raw=true "Tempest")
+
+21st August
+-----------
+Added support for faces with texture and normal indeces in .obj to .json converter.
+
+26th August
+-----------
+Started an experiment with creating an SVG font.
+
+Added 3D and timeline libraries.
+
+Disabled alpha and smoothing on 3D canvas element to improve rendering speeds.
+
+Added support for browser resizing.
