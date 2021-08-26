@@ -52,6 +52,33 @@ function rafcallback(timestamp)
   window.requestAnimationFrame(rafcallback);
 }
 
+// Action a browser resize
+function resize()
+{
+ var aspectratio=1280/720;
+ var newx, newy;
+
+ if ((window.innerWidth/window.innerHeight)<aspectratio)
+ {
+   newx=window.innerWidth;
+   newy=window.innerWidth/aspectratio;
+ }
+ else
+ {
+   newy=window.innerHeight;
+   newx=window.innerHeight*aspectratio;
+ }
+
+  gs.static_canvas.style.width=newx+"px";
+  gs.static_canvas.style.height=newy+"px";
+
+  gs.dynamic_canvas.style.width=newx+"px";
+  gs.dynamic_canvas.style.height=newy+"px";
+
+  gs.threedee.canvas.style.width=newx+"px";
+  gs.threedee.canvas.style.height=newy+"px";
+}
+
 // Startup called once when page is loaded
 function startup()
 {
@@ -74,6 +101,10 @@ function startup()
   console.log(gs);
   gs.threedee=new engine3D;
   gs.threedee.start();
+
+  // Handle resizing and device rotation
+  resize();
+  window.addEventListener("resize", resize);
 }
 
 // Run the startup() once page has loaded
