@@ -98,6 +98,10 @@ Started an experiment with creating an SVG font.
 
 Added 3D and timeline libraries.
 
+Fixed script which calls closure compiler when more than one jar exist.
+
+Added animation callback to process game state advancement.
+
 Disabled alpha and smoothing on 3D canvas element to improve rendering speeds.
 
 Added support for browser resizing.
