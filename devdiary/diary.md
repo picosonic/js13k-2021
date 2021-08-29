@@ -105,3 +105,7 @@ Added animation callback to process game state advancement.
 Disabled alpha and smoothing on 3D canvas element to improve rendering speeds.
 
 Added support for browser resizing.
+
+29th August
+-----------
+Added test for plane engine noise using [brown noise](https://en.wikipedia.org/wiki/Brownian_noise), based on some [sample code](https://noisehack.com/generate-noise-web-audio-api/).
