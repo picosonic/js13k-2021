@@ -1,0 +1,128 @@
+<html>
+<head>
+  <script type="text/javascript">
+
+  var audioContext = new (window.webkitAudioContext || window.AudioContext)();
+
+  var thrust=false;
+  var throttle=0;
+  var spos=0;
+
+  function createBrownNoise()
+  {
+    var lastOut = 0.0;
+    var node = audioContext.createScriptProcessor(4096, 1, 1);
+    node.onaudioprocess = function(e) {
+        var output = e.outputBuffer.getChannelData(0);
+        for (var i = 0; i < 4096; i++) {
+            var white = Math.random() * 2 - 1;
+            output[i] = (lastOut + (0.02 * white)) / 1.02;
+            lastOut = output[i];
+            output[i] *= 3.5; // (roughly) compensate for gain
+        }
+    }
+    return node;
+  }
+
+var brownNoise = createBrownNoise();
+var brownGain = audioContext.createGain();
+
+brownGain.gain.value = 0;
+brownNoise.connect(brownGain);
+//brownGain.connect(audioContext.destination);
+
+var panNode=audioContext.createStereoPanner();
+panNode.connect(audioContext.destination);
+
+brownGain.connect(panNode);
+
+  function thrusttoggle()
+  {
+    if (!thrust)
+    {
+      throttle=0.005;
+      brownGain.gain.value=throttle;
+      thrust=true;
+    }
+    else
+    {
+      throttle=0.0;
+      brownGain.gain.value=throttle;
+      thrust=false;
+    }
+  }
+  
+  function thrustup()
+  {
+    if (!thrust) return;
+
+    if (throttle<0.05)
+    {
+      throttle+=0.0001;
+      brownGain.gain.value=throttle;
+    }
+  }
+  
+  function thrustdown()
+  {
+    if (!thrust) return;
+    
+    if (throttle>0)
+    {
+      throttle-=0.0001;
+      brownGain.gain.value=throttle;
+    }
+  }
+  
+  function thrustleft()
+  {
+    if (spos>-0.5)
+    {
+      spos-=0.01;
+      panNode.pan.setValueAtTime(spos, audioContext.currentTime);
+    }
+  }
+
+  function thrustright()
+  {
+    if (spos<0.5)
+    {
+      spos+=0.01;
+      panNode.pan.setValueAtTime(spos, audioContext.currentTime);
+    }
+  }
+  
+  function checkKey(e)
+  {
+    e=e||window.event;
+
+    if (e.keyCode=='38')
+    {
+      // up arrow
+      thrustup();
+    }
+    else if (e.keyCode=='40')
+    {
+      // down arrow
+      thrustdown();
+    }
+    else if (e.keyCode=='37')
+    {
+      // left arrow
+      thrustleft();
+    }
+    else if (e.keyCode=='39')
+    {
+      // right arrow
+      thrustright();
+    }
+  }
+  
+  document.onkeydown=checkKey;
+  </script>
+</head>
+<body>
+Use Up/Down/Left/Right to alter noise<p>
+<button onclick="thrusttoggle()">Start/Stop</button>
+</body>
+</html>
