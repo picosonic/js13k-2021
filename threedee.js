@@ -131,6 +131,8 @@ class mesh
   loadfromobject(obj)
   {
     if (obj==undefined) return;
+    
+    obj.s*=0.05;
 
     for (var i=0; i<obj.f.length; i++)
     {
@@ -206,6 +208,9 @@ class engine3D
 
     this.meshcube.cleartris();
     this.meshcube.loadfromobject(this.findmodel("stealth"));
+    this.meshcube.loadfromobject(this.findmodel("cvn-65"));
+    
+    this.theta=4.3;
   }
 
   // Find 3D model by name
@@ -261,7 +266,7 @@ class engine3D
     var matrotz=new mat4x4();
     var matrotx=new mat4x4();
 
-    this.theta+=0.05;
+    this.theta+=0.005;
     this.theta%=(4*Math.PI);
 
     // Rotation Z
