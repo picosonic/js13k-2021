@@ -109,3 +109,9 @@ Added support for browser resizing.
 29th August
 -----------
 Added test for plane engine noise using [brown noise](https://en.wikipedia.org/wiki/Brownian_noise), based on some [sample code](https://noisehack.com/generate-noise-web-audio-api/).
+
+Tested loading 3D plane and carrier models to check scale.
+
+30th/31st August
+----------------
+Spent time trying to fix 3D software renderer which has an issue with clipping. Some triangles when aligned towards the viewer appear to be culled incorrectly.
