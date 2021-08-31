@@ -115,3 +115,6 @@ Tested loading 3D plane and carrier models to check scale.
 30th/31st August
 ----------------
 Spent time trying to fix 3D software renderer which has an issue with clipping. Some triangles when aligned towards the viewer appear to be culled incorrectly.
+
+![3D clipping](aug31.jpg?raw=true "3D clipping")
+
