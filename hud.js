@@ -114,7 +114,7 @@ function drawhud(ps)
   ctx.stroke();
   write(ctx, 474, 223, ""+altitudeformat(ps.altitude, true), 2, ps.hudcolour);
 
-  min=ps.altitude-800; max=ps.altitude+800;
+  min=Math.floor(ps.altitude-800); max=Math.floor(ps.altitude+800);
   for (i=min; i<max; i++)
   {
     if ((i%500)==0)
