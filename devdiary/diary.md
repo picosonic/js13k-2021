@@ -118,3 +118,27 @@ Spent time trying to fix 3D software renderer which has an issue with clipping. 
 
 ![3D clipping](aug31.jpg?raw=true "3D clipping")
 
+9th September
+--------------
+Having devoted much of my dev time to my [mobile entry for JS13k](https://js13kgames.com/entries/crater-space) to get at least one game submitted, I've now moved back on to AirSpace Alpha Zulu.
+
+Imported the stealth jet and aircraft carrier models.
+
+Added basic keyboard navigation.
+
+10th September
+--------------
+Struggling with the maths behind the 3D navigation and model rotations, so decided to look at a previous game I had made for JS13k. This was a [3D flying game](https://js13kgames.com/entries/backspace-return-to-planet-figadore) which rendered the 3D polys to an SVG, this worked reaonably well but my new models are aligned differently.
+
+|   | X | Y | Z |
+|---|:---:|:---:|:---:|
+|old | left/right | up/down | forward/back |
+|new | forward/back | left/right | up/down |
+
+Where :
+
+ * left/right = [sagittal plane](https://en.wikipedia.org/wiki/Sagittal_plane)
+ * up/down = [transverse plane](https://en.wikipedia.org/wiki/Transverse_plane)
+ * forward/back = [coronal plane](https://en.wikipedia.org/wiki/Coronal_plane)
+
+So to use the same navigation code I needed to rotate the new models by 90 degrees on X axis (roll) and 270 degrees on Z axis (yaw).
