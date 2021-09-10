@@ -72,7 +72,7 @@ function drawhud(ps)
   ctx.stroke();
   write(ctx, 57, 223, ""+Math.floor(ps.knots), 2, ps.hudcolour);
 
-  min=ps.knots-80; max=ps.knots+80;
+  min=Math.floor(ps.knots-80); max=Math.floor(ps.knots+80);
   for (i=min; i<max; i++)
   {
     if ((i%50)==0)
