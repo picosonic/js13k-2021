@@ -156,3 +156,11 @@ Start on the carrier in the middle of a launch.
 When doing below 50 knots, loose altitude due to stalling.
 
 Fixed position of jet HUD overlay. Added pitch ladder updates due to roll and climb/descend.
+
+Made some screenshots for submission.
+
+13th September
+--------------
+Detect crashes into the sea and successful landings.
+
+Packed everything up and submitted.
