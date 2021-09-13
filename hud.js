@@ -25,6 +25,20 @@ function altitudeformat(altitude, full)
   return altstr;
 }
 
+function clearhud(ps)
+{
+  // Static HUD elements
+  var canvas=ps.static_canvas;
+  var ctx=ps.static_ctx;
+
+  // Dynamic HUD elements
+  var dcanvas=ps.dynamic_canvas;
+  var dctx=ps.dynamic_ctx;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  dctx.clearRect(0, 0, dcanvas.width, dcanvas.height);
+}
+
 function drawhud(ps)
 {
   var min, max, i;
@@ -59,7 +73,7 @@ function drawhud(ps)
   ctx.beginPath();  ctx.arc(282, 175, 8, 0, 2 * Math.PI); ctx.stroke();
   
   // Draw airspeed calibration
-  write(ctx, 126, 211, "C", 2, ps.hudcolour);
+  hudwrite(ctx, 126, 211, "C", 2, ps.hudcolour);
   ctx.beginPath();
   ctx.moveTo(121, 230); ctx.lineTo(139, 230);
   ctx.stroke();
@@ -70,7 +84,7 @@ function drawhud(ps)
   ctx.lineTo(102, 230); ctx.lineTo(92, 240);
   ctx.lineTo(49, 240); ctx.lineTo(49, 220);
   ctx.stroke();
-  write(ctx, 57, 223, ""+Math.floor(ps.knots), 2, ps.hudcolour);
+  hudwrite(ctx, 57, 223, ""+Math.floor(ps.knots), 2, ps.hudcolour);
 
   min=Math.floor(ps.knots-80); max=Math.floor(ps.knots+80);
   for (i=min; i<max; i++)
@@ -86,7 +100,7 @@ function drawhud(ps)
       ty=294-(((i-min)/10)*8)-6;
       
       if ((ty<212) || (ty>236))
-        write(ctx, tx, ty, ""+(i/10), 2, ps.hudcolour);
+        hudwrite(ctx, tx, ty, ""+(i/10), 2, ps.hudcolour);
     }
     else if ((i%10)==0)
     {
@@ -98,11 +112,11 @@ function drawhud(ps)
   }
 
   // Draw master arm and mach
-  write(ctx, 124, 303, "SIM", 2, ps.hudcolour);
-  write(ctx, 120, 322, ""+(mach.toFixed(2)), 2, ps.hudcolour);
+  hudwrite(ctx, 124, 303, "SIM", 2, ps.hudcolour);
+  hudwrite(ctx, 120, 322, ""+(mach.toFixed(2)), 2, ps.hudcolour);
 
   // Draw altimeter calibration
-//  write(ctx, 430, 211, "", 2, ps.hudcolour);
+//  hudwrite(ctx, 430, 211, "", 2, ps.hudcolour);
   ctx.beginPath();
   ctx.moveTo(426, 230); ctx.lineTo(443, 230);
   ctx.stroke();
@@ -112,7 +126,7 @@ function drawhud(ps)
   ctx.lineTo(528, 240); ctx.lineTo(472, 240);
   ctx.lineTo(462, 230); ctx.lineTo(472, 220);
   ctx.stroke();
-  write(ctx, 474, 223, ""+altitudeformat(ps.altitude, true), 2, ps.hudcolour);
+  hudwrite(ctx, 474, 223, ""+altitudeformat(ps.altitude, true), 2, ps.hudcolour);
 
   min=Math.floor(ps.altitude-800); max=Math.floor(ps.altitude+800);
   for (i=min; i<max; i++)
@@ -128,7 +142,7 @@ function drawhud(ps)
       ty=294-(((i-min)/100)*8)-6;
       
       if ((ty<212) || (ty>236))
-        write(ctx, tx, ty, ""+altitudeformat(i, false), 2, ps.hudcolour);
+        hudwrite(ctx, tx, ty, ""+altitudeformat(i, false), 2, ps.hudcolour);
     }
     else if ((i%100)==0)
     {
@@ -140,14 +154,14 @@ function drawhud(ps)
   }
   
   // Draw radar altitude
-  write(ctx, 404, 311, "R", 2, ps.hudcolour);
+  hudwrite(ctx, 404, 311, "R", 2, ps.hudcolour);
   ctx.beginPath();
   ctx.moveTo(417, 309); ctx.lineTo(478, 309);
   ctx.lineTo(478, 327); ctx.lineTo(417, 327); ctx.lineTo(417, 309);
   ctx.stroke();
 
   ta=ps.altitude-650; // Offset by height above sea level
-  write(ctx, 424, 311, ""+altitudeformat(ta, true), 2, ps.hudcolour);
+  hudwrite(ctx, 424, 311, ""+altitudeformat(ta, true), 2, ps.hudcolour);
 
   // Draw great circle steering cue
   ctx.beginPath();  ctx.arc(330, 175, 5, 0, 2 * Math.PI); ctx.stroke();
@@ -190,20 +204,20 @@ function drawhud(ps)
         dctx.moveTo(352, ta); dctx.lineTo(310, ta); dctx.lineTo(310, ta+(i<0?-10:10));
         dctx.stroke();
        
-        write(dctx, 210-(Math.abs(i)>9?16:8), ta-8, ""+Math.abs(i), 2, ps.hudcolour);
-        write(dctx, 352, ta-8, ""+Math.abs(i), 2, ps.hudcolour);
+        hudwrite(dctx, 210-(Math.abs(i)>9?16:8), ta-8, ""+Math.abs(i), 2, ps.hudcolour);
+        hudwrite(dctx, 352, ta-8, ""+Math.abs(i), 2, ps.hudcolour);
       }
     }
   }
 
   // Draw altitude low setting
-  write(ctx, 410, 334, "AL "+altlow, 2, ps.hudcolour);
+  hudwrite(ctx, 410, 334, "AL "+altlow, 2, ps.hudcolour);
 
   // Draw waypoint heading
   // TODO
 
   // Draw waypoint distance (miles)/number
-  write(ctx, 411, 388, "018>01", 2, ps.hudcolour);
+  hudwrite(ctx, 411, 388, "018>01", 2, ps.hudcolour);
 
   // Draw roll indicator scale
   for (i=-45; i<=45; i+=5)
@@ -262,7 +276,7 @@ function drawhud(ps)
         tx=Math.floor((i-360)/10);
         if (tx<0) tx=360+tx;
         if (tx==36) tx=0;
-        write(ctx, 190+ta, 118, ""+(tx<10?"0":"")+tx, 2, ps.hudcolour);
+        hudwrite(ctx, 190+ta, 118, ""+(tx<10?"0":"")+tx, 2, ps.hudcolour);
       }
     }
   }
@@ -273,12 +287,12 @@ function drawhud(ps)
   ctx.stroke();
 
   tp-=360;
-  write(ctx, 270, 120, ""+(tp<10?"00":(tp<100?"0":""))+tp, 2, ps.hudcolour);
+  hudwrite(ctx, 270, 120, ""+(tp<10?"00":(tp<100?"0":""))+tp, 2, ps.hudcolour);
   
   // Draw operating mode
-  write(ctx, 93, 356, "NAV", 2, ps.hudcolour);
+  hudwrite(ctx, 93, 356, "NAV", 2, ps.hudcolour);
   
   // Draw max Gs
-  write(ctx, 93, 338, "8.1", 2, ps.hudcolour);
+  hudwrite(ctx, 93, 338, "8.1", 2, ps.hudcolour);
 }
 

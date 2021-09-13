@@ -9,8 +9,6 @@ class timelineobj
     this.timelineepoch=0; // Epoch when timeline was started
     this.callback=null; // Optional callback on each timeline "tick"
     this.running=false; // Start in non-running state
-    this.looped=0; // Completed iterations
-    this.loop=1; // Number of times to loop, 0 means infinite
   }
 
   // Add a new function to timeline with a given start time
@@ -72,37 +70,12 @@ class timelineobj
 
     // If there is more jobs then request another callback
     if ((this.timelinepos==this.timelineepoch) || (remain>0))
-    {
       window.requestAnimationFrame(this.timelineraf.bind(this));
-    }
-    else
-    {
-      this.looped++;
-
-      // Check for more iterations
-      if ((this.loop==0) || (this.looped<this.loop))
-      {
-        this.running=false; // Prevent running until we've reset
-
-        this.timelinepos=0;
-        this.timelineepoch=0;
-
-        // Look through timeline, resetting done flag
-        for (var i=0; i<this.timeline.length; i++)
-          this.timeline[i].done=false;
-
-        this.running=true; // Start next iteration
-        window.requestAnimationFrame(this.timelineraf.bind(this));
-      }
-    }
   }
 
   // Start the timeline running
-  begin(loop)
+  begin()
   {
-    this.looped=0;
-    this.loop=(loop==undefined?1:loop);
-
     this.running=true;
 
     window.requestAnimationFrame(this.timelineraf.bind(this));
@@ -123,7 +96,5 @@ class timelineobj
     this.timelinepos=0; // Point in time of last update
     this.timelineepoch=0; // Epoch when timeline was started
     this.callback=null; // Optional callback on each timeline "tick"
-    this.looped=0; // Completed iterations
-    this.loop=1; // Number of times to loop, 0 means infinite
   }
 }

@@ -5,18 +5,38 @@
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
   <title>Airspace Alpha Zulu</title>
   <link rel="stylesheet" href="main.css">
+  <script type="text/javascript" src="random.js"></script>
   <script type="text/javascript" src="timeline.js"></script>
   <script type="text/javascript" src="font.js"></script>
   <script type="text/javascript" src="writer.js"></script>
-  <script type="text/javascript" src="hud.js"></script>
+  <script type="text/javascript" src="hudfont.js"></script>
+  <script type="text/javascript" src="hudwriter.js"></script>
   <script type="text/javascript" src="models.js"></script>
-  <script type="text/javascript" src="threedee.js"></script>
+  <script type="text/javascript" src="3dsvg.js"></script>
+  <script type="text/javascript" src="hud.js"></script>
   <script type="text/javascript" src="main.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 <body>
-  <canvas id="threedee" width="1280" height="720"></canvas>
-  <canvas id="hud" width="1280" height="720"></canvas>
-  <canvas id="hud2" width="1280" height="720"></canvas>
+<div id="wrapper">
+  <svg id="svg" style="width:1280px; height:720px;" viewbox="0 0 640 360">
+    <defs>
+      <clipPath id="crop">
+        <rect x="0" y="0" width="640" height="360" />
+      </clipPath>
+
+      <linearGradient id="skygradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgb(45,145,194);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgb(30,82,142);stop-opacity:1" />
+      </linearGradient>
+    </defs>
+
+    <rect width="640" height="360" fill="url(#skygradient)" />
+    <g id="playfield" shaperendering="optimizeSpeed" clip-path="url(#crop)"></g>
+    <g id="txthud" shaperendering="optimizeSpeed" clip-path="url(#crop)"></g>
+  </svg>
+  <canvas id="static_hud" width="640" height="480"></canvas>
+  <canvas id="dynamic_hud" width="640" height="480"></canvas>
+</div>
 </body>
 </html>

@@ -30,7 +30,7 @@ echo "];" >> "${models}"
 
 # Concatenate the JS files
 touch "${jscat}" >/dev/null 2>&1
-for file in "timeline.js" "font.js" "writer.js" "hud.js" "models.js" "threedee.js" "main.js"
+for file in "random.js" "timeline.js" "font.js" "writer.js" "hudfont.js" "hudwriter.js" "models.js" "3dsvg.js" "hud.js" "main.js"
 do
   cat "${file}" >> "${jscat}"
 done
@@ -51,7 +51,7 @@ echo -n '</style><script type="text/javascript">' >> "${indexcat}"
 ./closeyoureyes.sh "${jscat}" >> "${indexcat}"
 
 # Add on the rest of the index file
-echo -n '</script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/></head><body><canvas id="threedee" width="1280" height="720"></canvas><canvas id="hud" width="1280" height="720"></canvas><canvas id="hud2" width="1280" height="720"></canvas></body></html>' >> "${indexcat}"
+echo -n '</script><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/></head><body><div id="wrapper"><svg id="svg" style="width:1280px; height:720px;" viewbox="0 0 640 360"><defs><clipPath id="crop"><rect x="0" y="0" width="640" height="360" /></clipPath><linearGradient id="skygradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(45,145,194);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(30,82,142);stop-opacity:1" /></linearGradient></defs><rect width="640" height="360" fill="url(#skygradient)" /><g id="playfield" shaperendering="optimizeSpeed" clip-path="url(#crop)"></g><g id="txthud" shaperendering="optimizeSpeed" clip-path="url(#crop)"></g></svg><canvas id="static_hud" width="640" height="480"></canvas><canvas id="dynamic_hud" width="640" height="480"></canvas></div></body></html>' >> "${indexcat}"
 
 # Remove the minified JS
 rm "${jscat}" >/dev/null 2>&1

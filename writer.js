@@ -1,12 +1,13 @@
-// Text writer
-function write(ctx, x, y, text, size, style)
+function clear(id)
 {
-  ctx.save();
+  id.innerHTML="";
+}
 
-  // Set fill style
-  ctx.fillStyle=style;
+function writeseg(id, x, y, text, colour, scale)
+{
+  var svgtext="";
+  var charwidth=52;
 
-  // Iterate through characters to write
   for (var i=0; i<text.length; i++)
   {
     var offs=(text.charCodeAt(i)-32);
@@ -15,37 +16,38 @@ function write(ctx, x, y, text, size, style)
     if ((offs<0) || (offs>94))
       continue;
 
-    // Draw "pixels"
-    var px=0;
-    var py=0;
+    var segcode=font_14segment[offs]||0;
 
-    // Iterate through the 4 bytes used to define character
-    for (var j=0; j<4; j++)
+    for (var k=0; k<2; k++)
     {
-      var dual=font_8bit[(offs*4)+j]||0;
+      svgtext+="<g style='transform:scale(1,-1); transform-origin:center;'";
+      if (k==0) svgtext+=" filter='url(#dblur2)'";
+      svgtext+=">";
 
-      // Iterate through bits in byte
-      for (var k=0; k<8; k++)
-      {
-        if (dual&(1<<(8-k)))
-          ctx.fillRect(Math.floor(x+(i*4*size)+(px*size)), Math.floor(y+(size*py)), Math.ceil(size), Math.ceil(size));
-
-        px++;
-        if (px==4)
+      for (var j=0; j<16; j++)
+        if (segcode&(1<<j))
         {
-          px=0;
-          py++;
+          if (j==14) // DP
+          {
+            svgtext+='<circle cx="'+(scale*font_14segment_cell[j][0])+'" cy="'+(scale*font_14segment_cell[j][1])+'" r="'+(scale*font_14segment_cell[j][2]);
+          }
+          else
+          {
+            svgtext+='<polygon points="';
+            for (var l=0; l<font_14segment_cell[j].length/2; l++)
+            {
+              svgtext+=' '+(scale*font_14segment_cell[j][l*2]);
+              svgtext+=','+(scale*font_14segment_cell[j][l*2+1]);
+            }
+          }
+
+          svgtext+='" style="fill:'+(colour||'#ff0000')+';stroke:none;" transform="translate('+(x+((scale*i*charwidth)))+' '+(gs.svg.ymax-y)+')"/>';
         }
-      }
-      ctx.stroke();
+
+      svgtext+="</g>";
     }
+
   }
 
-  ctx.restore();
-}
-
-function shadowwrite(ctx, x, y, text, size, style)
-{
-  write(ctx, x+(size/2), y+(size/2), text, size, "rgba(64,64,64,0.5)");
-  write(ctx, x, y, text, size, style);
+  id.innerHTML+=svgtext;
 }

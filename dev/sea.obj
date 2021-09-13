@@ -1,0 +1,14 @@
+# Sea
+# scale 0.1 pixels/metre
+
+mtllib open_gl.mtl
+
+v -1000 -1000 -70
+v 1000 -1000 -70
+v -1000 1000 -70
+v 1000 1000 -70
+
+usemtl gl_11
+
+f 1 2 3
+f 2 4 3

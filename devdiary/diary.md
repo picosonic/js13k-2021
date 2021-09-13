@@ -142,3 +142,17 @@ Where :
  * forward/back = [coronal plane](https://en.wikipedia.org/wiki/Coronal_plane)
 
 So to use the same navigation code I needed to rotate the new models by 90 degrees on X axis (roll) and 270 degrees on Z axis (yaw).
+
+11th September
+--------------
+Added throttle up/down.
+
+12th September
+--------------
+Added brownian noise for jet, which changes as your speed and roll does.
+
+Start on the carrier in the middle of a launch.
+
+When doing below 50 knots, loose altitude due to stalling.
+
+Fixed position of jet HUD overlay. Added pitch ladder updates due to roll and climb/descend.

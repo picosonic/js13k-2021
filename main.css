@@ -1,31 +1,49 @@
-body
+*
 {
-  background:black;
-  overflow:hidden;
+  margin:0px;
+  padding:0px;
+
+  user-select:none; /* Chrome and Opera */
+  -webkit-user-select:none; /* Safari */
+  -moz-user-select:none; /* Firefox */
+
+  touch-action:none; /* disable panning/zooming gestures */
 }
 
-canvas
+body
+{
+  overflow:hidden;
+  background:#000;
+}
+
+#wrapper
 {
   position:absolute;
   left:0px;
   top:0px;
-  width:1280px;
-  height:720px;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+#svg
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:640px;
+  height:360px;
 
   image-rendering:-moz-crisp-edges;
   image-rendering:-webkit-crisp-edges;
   image-rendering:pixelated;
   image-rendering:crisp-edges;
+
+  z-index:1;
 }
 
-#threedee
+canvas
 {
-}
-
-#hud
-{
-}
-
-#hud2
-{
+  position:absolute;
+  z-index:2;
 }

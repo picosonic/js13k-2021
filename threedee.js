@@ -132,7 +132,7 @@ class mesh
   {
     if (obj==undefined) return;
     
-    obj.s*=0.05;
+    var scale=obj.s*0.005;
 
     for (var i=0; i<obj.f.length; i++)
     {
@@ -151,9 +151,9 @@ class mesh
         b=palette[obj.c[i]][2];
       }
 
-      this.addface(obj.v[v1-1][0]*obj.s, obj.v[v1-1][1]*obj.s, obj.v[v1-1][2]*obj.s,
-                   obj.v[v2-1][0]*obj.s, obj.v[v2-1][1]*obj.s, obj.v[v2-1][2]*obj.s,
-                   obj.v[v3-1][0]*obj.s, obj.v[v3-1][1]*obj.s, obj.v[v3-1][2]*obj.s,
+      this.addface(obj.v[v1-1][0]*scale, obj.v[v1-1][1]*scale, obj.v[v1-1][2]*scale,
+                   obj.v[v2-1][0]*scale, obj.v[v2-1][1]*scale, obj.v[v2-1][2]*scale,
+                   obj.v[v3-1][0]*scale, obj.v[v3-1][1]*scale, obj.v[v3-1][2]*scale,
                    r, g, b);
     }
   }
@@ -205,12 +205,52 @@ class engine3D
     this.matproj.set(3, 2, (-ffar*fnear)/(ffar-fnear));
     this.matproj.set(2, 3, 1);
     this.matproj.set(3, 3, 0);
-
-    this.meshcube.cleartris();
-    this.meshcube.loadfromobject(this.findmodel("stealth"));
-    this.meshcube.loadfromobject(this.findmodel("cvn-65"));
-    
+  
     this.theta=4.3;
+    
+    // The active 3D models
+    this.activemodels=[];
+  }
+
+  // Generate a UUID v4 as per RFC 4122
+  uuidv4()
+  {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+  // Add models to active models
+  addmodel(model, x, y, z, rotx, roty, rotz)
+  {
+    var obj=deepclone(model);
+
+    obj.id=this.uuidv4();
+
+    // Translation
+    obj.x=x;
+    obj.y=y;
+    obj.z=z;
+
+    // Rotation
+    obj.rotx=rotx;
+    obj.roty=roty;
+    obj.rotz=rotz;
+
+    // Velocity
+    obj.vx=0;
+    obj.vy=0;
+    obj.vz=0;
+
+    // Flags
+    obj.flags=0;
+
+    obj.s*=10;
+
+    this.activemodels.push(obj);
+
+    return (this.activemodels.length-1);
   }
 
   // Find 3D model by name
@@ -221,6 +261,14 @@ class engine3D
         return models[i];
 
     return undefined;
+  }
+
+  // Add a model by name
+  addnamedmodel(name, x, y, z, rotx, roty, rotz)
+  {
+    for (var i=0; i<models.length; i++)
+      if (models[i].t==name)
+        return this.addmodel(models[i], x, y, z, rotx, roty, rotz);
   }
 
   // Start engine running
@@ -266,8 +314,8 @@ class engine3D
     var matrotz=new mat4x4();
     var matrotx=new mat4x4();
 
-    this.theta+=0.005;
-    this.theta%=(4*Math.PI);
+//    this.theta+=0.005;
+//    this.theta%=(4*Math.PI);
 
     // Rotation Z
     matrotz.set(0, 0, Math.cos(this.theta));
@@ -286,7 +334,13 @@ class engine3D
     matrotx.set(3, 3, 1);
 
     var trianglestoraster=new Array();
-
+    
+    // Find triangles from active objects
+    this.meshcube.cleartris();
+    this.activemodels.forEach(function (item, index) {
+      this.meshcube.loadfromobject(item);
+    }, this);
+    
     // Draw triangles
     for (var i=0; i<this.meshcube.len(); i++)
     {
