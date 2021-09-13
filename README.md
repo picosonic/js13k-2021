@@ -18,3 +18,13 @@ You are a test pilot in the navy and are out on operations testing an experiment
 * [advzip](https://github.com/amadvance/advancecomp) (uses [7-Zip](https://sourceforge.net/projects/sevenzip/files/7-Zip/) deflate to compress further)
 
 # Stuff I'd have done with more time
+- [ ] Intro and cutscene animation sequences
+- [ ] Wheels
+- [ ] Flaps/ailerons
+- [ ] Fix 3D engine, still showing some clipping and Z order issues
+- [ ] Missions to do whilst airbourne
+- [ ] Fix jet pitch
+- [ ] 1st person mode
+- [ ] Collision detection
+- [ ] Weapons
+- [ ] Dog fighting
