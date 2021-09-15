@@ -19,6 +19,10 @@ You are a test pilot in the navy and are out on operations testing an experiment
 
 # Stuff I'd have done with more time
 - [ ] Intro and cutscene animation sequences
+- [ ] Top Gun inspired SVG font
+- [ ] Increase the size of the game world
+- [ ] Add procgen clouds
+- [ ] Add the sun with lens flare
 - [ ] Wheels
 - [ ] Flaps/ailerons
 - [ ] Fix 3D engine, still showing some clipping and Z order issues
