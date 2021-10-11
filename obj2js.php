@@ -34,14 +34,14 @@ else
 // Next gather some stats on first pass
 $num_verts=0;
 $num_faces=0;
-$min_x=9999999;
-$max_x=-9999999;
-$min_y=9999999;
-$max_y=-9999999;
-$min_z=9999999;
-$max_z=-9999999;
-$min_face=9999999;
-$max_face=-9999999;
+$min_x=INF;
+$max_x=-INF;
+$min_y=INF;
+$max_y=-INF;
+$min_z=INF;
+$max_z=-INF;
+$min_face=INF;
+$max_face=-INF;
 
 $cur_tex=7; // White
 $vertices=array();
